@@ -1,0 +1,59 @@
+﻿<Window x:Class="DEM5.AddEditMaterialWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DEM5"
+        Background="{StaticResource PrimaryBackground}"
+        mc:Ignorable="d"
+        Icon="Resources/app_icon.ico"
+        Title="Добавить / Редактировать материал" Height="532" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок и Назад -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Button Content="← Назад" Click="BackButton_Click"
+                    Background="{StaticResource AccentBrush}" 
+                    Foreground="White" Padding="10,5" Margin="0,0,10,10"/>
+            <TextBlock Text="Материал" FontSize="22" VerticalAlignment="Center" />
+        </StackPanel>
+
+        <!-- Форма -->
+        <StackPanel Grid.Row="1" Margin="0,20,0,0">
+            <Label Content="Тип материала:" />
+            <ComboBox x:Name="MaterialTypeComboBox" />
+
+            <Label Content="Наименование:" />
+            <TextBox x:Name="MaterialNameTextBox" />
+
+            <Label Content="Цена за единицу:" />
+            <TextBox x:Name="CostTextBox" />
+
+            <Label Content="Единица измерения:" />
+            <TextBox x:Name="UnitTextBox" />
+
+            <Label Content="Количество в упаковке:" />
+            <TextBox x:Name="QuantityPerPackageTextBox" />
+
+            <Label Content="Количество на складе:" />
+            <TextBox x:Name="QuantityInStockTextBox" />
+
+            <Label Content="Минимальное количество:" />
+            <TextBox x:Name="MinQuantityTextBox" />
+            <Label Content="Поставщик:" />
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <ComboBox x:Name="SupplierComboBox" Width="300" DisplayMemberPath="CompanyName" SelectedValuePath="SupplierID"/>
+                <Button Content="Добавить поставщика" Margin="10,0,0,0" Click="AddSupplierButton_Click"/>
+            </StackPanel>
+            <Button Content="Сохранить" 
+                    Click="SaveMaterial_Click" 
+                    Background="{StaticResource AccentBrush}" 
+                    Foreground="White" 
+                    Margin="0,20,0,0" />
+        </StackPanel>
+    </Grid>
+</Window>

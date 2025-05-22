@@ -1,0 +1,38 @@
+﻿<Window x:Class="DEM5.MaterialCalculationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DEM5"
+        mc:Ignorable="d"
+        Icon="Resources/app_icon.ico"
+        Title="Кулькулятор" Height="450" Width="800">
+    <Grid Margin="10">
+        
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Button Content="← Назад" Click="BackButton_Click"
+    Background="{StaticResource AccentBrush}" 
+    Foreground="White" Padding="10,5" Margin="0,0,10,10"/>
+                <TextBlock Text="Калькулятор" FontSize="22" VerticalAlignment="Center" />
+
+            </StackPanel>
+            <TextBlock Text="Выберите материал:" FontWeight="Bold" Margin="0,0,0,5"/>
+            <ComboBox x:Name="MaterialsComboBox" DisplayMemberPath="MaterialName" SelectedValuePath="MaterialID" Margin="0,0,0,15"/>
+            <TextBlock Text="Выберите продукт:" FontWeight="Bold" Margin="0,10,0,5"/>
+            <ComboBox x:Name="ProductsComboBox" DisplayMemberPath="ProductName" SelectedValuePath="ProductID" Margin="0,0,0,15"/>
+            <TextBlock Text="Параметр 1 продукции:" Margin="0,5,0,0"/>
+            <TextBox x:Name="Param1TextBox" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Параметр 2 продукции:"/>
+            <TextBox x:Name="Param2TextBox" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Количество сырья:"/>
+            <TextBox x:Name="MaterialAmountTextBox" Margin="0,0,0,10"/>
+
+            <Button Content="Рассчитать" Width="120" HorizontalAlignment="Left" Click="CalculateButton_Click"/>
+
+            <TextBlock x:Name="ResultTextBlock" FontWeight="Bold" FontSize="16" Margin="0,20,0,0" Foreground="DarkBlue"/>
+        </StackPanel>
+    </Grid>
+</Window>

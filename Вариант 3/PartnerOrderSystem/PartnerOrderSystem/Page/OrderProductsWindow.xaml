@@ -1,0 +1,35 @@
+﻿<Window x:Class="PartnerOrderSystem.OrderProductsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Продукция в заявке"
+        Height="450" Width="600"
+        Background="#FFFFFF"
+        FontFamily="Bahnschrift Light SemiCondensed">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0,0,0,10">
+            <TextBlock x:Name="OrderInfoText" FontSize="16" FontWeight="Bold" Foreground="#0C4882"/>
+            <TextBlock x:Name="PartnerInfoText" Margin="0,5,0,0" Foreground="#0C4882"/>
+            <TextBlock x:Name="StatusInfoText" Foreground="#0C4882"/>
+            <TextBlock x:Name="TotalInfoText" FontWeight="Bold" Margin="0,5,0,0" Foreground="#0C4882"/>
+        </StackPanel>
+
+        <DataGrid x:Name="ProductsGrid" Grid.Row="1" AutoGenerateColumns="False" Margin="0,0,0,10" 
+                  Background="#FFFFFF" Foreground="Black">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Продукт" Binding="{Binding Products.Name}" Width="*"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="100"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding UnitPrice, StringFormat={}{0:N2}}" Width="100"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding LineTotal, StringFormat={}{0:N2}}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="2" Content="Закрыть" Width="100" HorizontalAlignment="Right" Click="CloseButton_Click"
+                Background="#0C4882" Foreground="White" Padding="6"/>
+    </Grid>
+</Window>

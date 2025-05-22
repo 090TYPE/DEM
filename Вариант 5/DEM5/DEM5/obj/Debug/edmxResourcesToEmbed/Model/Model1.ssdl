@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище DEM5Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccessCards">
+    <Key>
+      <PropertyRef Name="CardID" />
+    </Key>
+    <Property Name="CardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="CardNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeEquipmentAccess">
+    <Key>
+      <PropertyRef Name="AccessID" />
+    </Key>
+    <Property Name="AccessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="EquipmentName" Type="nvarchar" MaxLength="100" />
+    <Property Name="AccessGrantedDate" Type="date" />
+  </EntityType>
+  <EntityType Name="EmployeeMovements">
+    <Key>
+      <PropertyRef Name="MovementID" />
+    </Key>
+    <Property Name="MovementID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="MovementTime" Type="datetime" Nullable="false" />
+    <Property Name="MovementType" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="BirthDate" Type="date" />
+    <Property Name="PassportData" Type="nvarchar" MaxLength="50" />
+    <Property Name="BankDetails" Type="nvarchar" MaxLength="255" />
+    <Property Name="HasFamily" Type="bit" />
+    <Property Name="HealthStatus" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Managers">
+    <Key>
+      <PropertyRef Name="ManagerID" />
+    </Key>
+    <Property Name="ManagerID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaterialQuantityHistory">
+    <Key>
+      <PropertyRef Name="HistoryID" />
+    </Key>
+    <Property Name="HistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaterialID" Type="int" Nullable="false" />
+    <Property Name="ChangeDate" Type="datetime" Nullable="false" />
+    <Property Name="ChangeAmount" Type="int" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Materials">
+    <Key>
+      <PropertyRef Name="MaterialID" />
+    </Key>
+    <Property Name="MaterialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaterialName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="SupplierID" Type="int" Nullable="false" />
+    <Property Name="QuantityPerPackage" Type="int" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="Image" Type="varbinary(max)" />
+    <Property Name="Cost" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="QuantityInStock" Type="int" />
+    <Property Name="MinQuantity" Type="int" />
+    <Property Name="MaterialTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="MaterialTypes">
+    <Key>
+      <PropertyRef Name="MaterialTypeID" />
+    </Key>
+    <Property Name="MaterialTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LossPercentage" Type="decimal" Precision="5" Scale="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="OrderDetailID" />
+    </Key>
+    <Property Name="OrderDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ProductionDate" Type="date" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartnerID" Type="int" Nullable="false" />
+    <Property Name="ManagerID" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="PrepaymentDate" Type="datetime" />
+    <Property Name="ProductionStartDate" Type="datetime" />
+    <Property Name="ProductionEndDate" Type="datetime" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OrderStatus" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Partners">
+    <Key>
+      <PropertyRef Name="PartnerID" />
+    </Key>
+    <Property Name="PartnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartnerTypeID" Type="int" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="LegalAddress" Type="nvarchar" MaxLength="255" />
+    <Property Name="INN" Type="nvarchar" MaxLength="12" />
+    <Property Name="DirectorFullName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Logo" Type="varbinary(max)" />
+    <Property Name="Rating" Type="int" />
+  </EntityType>
+  <EntityType Name="PartnerSalesHistory">
+    <Key>
+      <PropertyRef Name="SalesHistoryID" />
+    </Key>
+    <Property Name="SalesHistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartnerID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="SaleDate" Type="date" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PartnerSalesLocations">
+    <Key>
+      <PropertyRef Name="SalesLocationID" />
+    </Key>
+    <Property Name="SalesLocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartnerID" Type="int" Nullable="false" />
+    <Property Name="LocationType" Type="nvarchar" MaxLength="100" />
+    <Property Name="LocationAddress" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="PartnerTypes">
+    <Key>
+      <PropertyRef Name="PartnerTypeID" />
+    </Key>
+    <Property Name="PartnerTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductMaterials">
+    <Key>
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="MaterialID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="MaterialID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductPriceHistory">
+    <Key>
+      <PropertyRef Name="PriceHistoryID" />
+    </Key>
+    <Property Name="PriceHistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="ChangeDate" Type="datetime" Nullable="false" />
+    <Property Name="OldPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NewPrice" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Article" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductType" Type="nvarchar" MaxLength="100" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="Image" Type="varbinary(max)" />
+    <Property Name="MinPartnerPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PackageLength" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="PackageWidth" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="PackageHeight" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="WeightWithoutPackage" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="WeightWithPackage" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="QualityCertificate" Type="varbinary(max)" />
+    <Property Name="StandardNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="ProductionTime" Type="int" />
+    <Property Name="CostPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="WorkshopNumber" Type="int" />
+    <Property Name="EmployeesCount" Type="int" />
+  </EntityType>
+  <EntityType Name="Suppliers">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupplierType" Type="nvarchar" MaxLength="100" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="INN" Type="nvarchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="WarehouseOperations">
+    <Key>
+      <PropertyRef Name="OperationID" />
+    </Key>
+    <Property Name="OperationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaterialID" Type="int" Nullable="false" />
+    <Property Name="OperationDate" Type="datetime" Nullable="false" />
+    <Property Name="OperationType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__AccessCar__Emplo__6C190EBB">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="AccessCards" Type="Self.AccessCards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="AccessCards">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmployeeE__Emplo__72C60C4A">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="EmployeeEquipmentAccess" Type="Self.EmployeeEquipmentAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="EmployeeEquipmentAccess">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmployeeM__Emplo__6FE99F9F">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="EmployeeMovements" Type="Self.EmployeeMovements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="EmployeeMovements">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Managers__Manage__4D94879B">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="Managers" Type="Self.Managers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Managers">
+        <PropertyRef Name="ManagerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MaterialQ__Mater__571DF1D5">
+    <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+    <End Role="MaterialQuantityHistory" Type="Self.MaterialQuantityHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materials">
+        <PropertyRef Name="MaterialID" />
+      </Principal>
+      <Dependent Role="MaterialQuantityHistory">
+        <PropertyRef Name="MaterialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Materials__Suppl__534D60F1">
+    <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="1" />
+    <End Role="Materials" Type="Self.Materials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suppliers">
+        <PropertyRef Name="SupplierID" />
+      </Principal>
+      <Dependent Role="Materials">
+        <PropertyRef Name="SupplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__68487DD7">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Produ__693CA210">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__ManagerI__656C112C">
+    <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Managers">
+        <PropertyRef Name="ManagerID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="ManagerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__PartnerI__6477ECF3">
+    <End Role="Partners" Type="Self.Partners" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partners">
+        <PropertyRef Name="PartnerID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="PartnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Partners__Partne__3A81B327">
+    <End Role="PartnerTypes" Type="Self.PartnerTypes" Multiplicity="1" />
+    <End Role="Partners" Type="Self.Partners" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PartnerTypes">
+        <PropertyRef Name="PartnerTypeID" />
+      </Principal>
+      <Dependent Role="Partners">
+        <PropertyRef Name="PartnerTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PartnerSa__Partn__3D5E1FD2">
+    <End Role="Partners" Type="Self.Partners" Multiplicity="1" />
+    <End Role="PartnerSalesLocations" Type="Self.PartnerSalesLocations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partners">
+        <PropertyRef Name="PartnerID" />
+      </Principal>
+      <Dependent Role="PartnerSalesLocations">
+        <PropertyRef Name="PartnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PartnerSa__Partn__7A672E12">
+    <End Role="Partners" Type="Self.Partners" Multiplicity="1" />
+    <End Role="PartnerSalesHistory" Type="Self.PartnerSalesHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partners">
+        <PropertyRef Name="PartnerID" />
+      </Principal>
+      <Dependent Role="PartnerSalesHistory">
+        <PropertyRef Name="PartnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PartnerSa__Produ__7B5B524B">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="PartnerSalesHistory" Type="Self.PartnerSalesHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="PartnerSalesHistory">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductMa__Mater__60A75C0F">
+    <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+    <End Role="ProductMaterials" Type="Self.ProductMaterials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materials">
+        <PropertyRef Name="MaterialID" />
+      </Principal>
+      <Dependent Role="ProductMaterials">
+        <PropertyRef Name="MaterialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductMa__Produ__5FB337D6">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="ProductMaterials" Type="Self.ProductMaterials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductMaterials">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductPr__Produ__5CD6CB2B">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="ProductPriceHistory" Type="Self.ProductPriceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductPriceHistory">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Warehouse__Mater__76969D2E">
+    <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+    <End Role="WarehouseOperations" Type="Self.WarehouseOperations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materials">
+        <PropertyRef Name="MaterialID" />
+      </Principal>
+      <Dependent Role="WarehouseOperations">
+        <PropertyRef Name="MaterialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Materials_MaterialTypes">
+    <End Role="MaterialTypes" Type="Self.MaterialTypes" Multiplicity="0..1" />
+    <End Role="Materials" Type="Self.Materials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaterialTypes">
+        <PropertyRef Name="MaterialTypeID" />
+      </Principal>
+      <Dependent Role="Materials">
+        <PropertyRef Name="MaterialTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище DEM5ModelContainer">
+    <EntitySet Name="AccessCards" EntityType="Self.AccessCards" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeEquipmentAccess" EntityType="Self.EmployeeEquipmentAccess" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeMovements" EntityType="Self.EmployeeMovements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Managers" EntityType="Self.Managers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MaterialQuantityHistory" EntityType="Self.MaterialQuantityHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MaterialTypes" EntityType="Self.MaterialTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Partners" EntityType="Self.Partners" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PartnerSalesHistory" EntityType="Self.PartnerSalesHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PartnerSalesLocations" EntityType="Self.PartnerSalesLocations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PartnerTypes" EntityType="Self.PartnerTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductMaterials" EntityType="Self.ProductMaterials" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductPriceHistory" EntityType="Self.ProductPriceHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Suppliers" EntityType="Self.Suppliers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WarehouseOperations" EntityType="Self.WarehouseOperations" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__AccessCar__Emplo__6C190EBB" Association="Self.FK__AccessCar__Emplo__6C190EBB">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="AccessCards" EntitySet="AccessCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmployeeE__Emplo__72C60C4A" Association="Self.FK__EmployeeE__Emplo__72C60C4A">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="EmployeeEquipmentAccess" EntitySet="EmployeeEquipmentAccess" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmployeeM__Emplo__6FE99F9F" Association="Self.FK__EmployeeM__Emplo__6FE99F9F">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="EmployeeMovements" EntitySet="EmployeeMovements" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Managers__Manage__4D94879B" Association="Self.FK__Managers__Manage__4D94879B">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Managers" EntitySet="Managers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MaterialQ__Mater__571DF1D5" Association="Self.FK__MaterialQ__Mater__571DF1D5">
+      <End Role="Materials" EntitySet="Materials" />
+      <End Role="MaterialQuantityHistory" EntitySet="MaterialQuantityHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Materials__Suppl__534D60F1" Association="Self.FK__Materials__Suppl__534D60F1">
+      <End Role="Suppliers" EntitySet="Suppliers" />
+      <End Role="Materials" EntitySet="Materials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__68487DD7" Association="Self.FK__OrderDeta__Order__68487DD7">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Produ__693CA210" Association="Self.FK__OrderDeta__Produ__693CA210">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__ManagerI__656C112C" Association="Self.FK__Orders__ManagerI__656C112C">
+      <End Role="Managers" EntitySet="Managers" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__PartnerI__6477ECF3" Association="Self.FK__Orders__PartnerI__6477ECF3">
+      <End Role="Partners" EntitySet="Partners" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Partners__Partne__3A81B327" Association="Self.FK__Partners__Partne__3A81B327">
+      <End Role="PartnerTypes" EntitySet="PartnerTypes" />
+      <End Role="Partners" EntitySet="Partners" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PartnerSa__Partn__3D5E1FD2" Association="Self.FK__PartnerSa__Partn__3D5E1FD2">
+      <End Role="Partners" EntitySet="Partners" />
+      <End Role="PartnerSalesLocations" EntitySet="PartnerSalesLocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PartnerSa__Partn__7A672E12" Association="Self.FK__PartnerSa__Partn__7A672E12">
+      <End Role="Partners" EntitySet="Partners" />
+      <End Role="PartnerSalesHistory" EntitySet="PartnerSalesHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PartnerSa__Produ__7B5B524B" Association="Self.FK__PartnerSa__Produ__7B5B524B">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="PartnerSalesHistory" EntitySet="PartnerSalesHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductMa__Mater__60A75C0F" Association="Self.FK__ProductMa__Mater__60A75C0F">
+      <End Role="Materials" EntitySet="Materials" />
+      <End Role="ProductMaterials" EntitySet="ProductMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductMa__Produ__5FB337D6" Association="Self.FK__ProductMa__Produ__5FB337D6">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductMaterials" EntitySet="ProductMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductPr__Produ__5CD6CB2B" Association="Self.FK__ProductPr__Produ__5CD6CB2B">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductPriceHistory" EntitySet="ProductPriceHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Warehouse__Mater__76969D2E" Association="Self.FK__Warehouse__Mater__76969D2E">
+      <End Role="Materials" EntitySet="Materials" />
+      <End Role="WarehouseOperations" EntitySet="WarehouseOperations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Materials_MaterialTypes" Association="Self.FK_Materials_MaterialTypes">
+      <End Role="MaterialTypes" EntitySet="MaterialTypes" />
+      <End Role="Materials" EntitySet="Materials" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

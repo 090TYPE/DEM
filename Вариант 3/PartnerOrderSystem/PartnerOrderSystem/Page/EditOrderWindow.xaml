@@ -1,0 +1,81 @@
+﻿<Window x:Class="PartnerOrderSystem.EditOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Редактирование заявки"
+        Height="500" Width="800"
+        Background="#FFFFFF"
+        FontFamily="Bahnschrift Light SemiCondensed">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Партнер и статус -->
+            <RowDefinition Height="10"/>
+            <!-- Отступ -->
+            <RowDefinition Height="*"/>
+            <!-- Таблица продукции -->
+            <RowDefinition Height="Auto"/>
+            <!-- Итого -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопки -->
+        </Grid.RowDefinitions>
+
+        <!-- Информация о заявке -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" >
+            <Label Content="Партнер:" Width="80" Foreground="#0C4882" FontWeight="Bold" VerticalAlignment="Center"/>
+            <ComboBox x:Name="PartnerCombo" Width="300" DisplayMemberPath="Name" SelectedValuePath="Id" />
+            <Label Content="Статус:" Width="80" Margin="10,0,0,0" Foreground="#0C4882" FontWeight="Bold" VerticalAlignment="Center"/>
+            <ComboBox x:Name="StatusCombo" Width="120" >
+                <ComboBoxItem Content="Новая"/>
+                <ComboBoxItem Content="В обработке"/>
+                <ComboBoxItem Content="Завершена"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Продукция в заявке -->
+        <DataGrid x:Name="OrderProductsGrid" Grid.Row="2" AutoGenerateColumns="False"
+                  CanUserAddRows="False" Margin="0,10,0,10"
+                  Background="#FFFFFF"
+                  FontFamily="Bahnschrift Light SemiCondensed"
+                  Foreground="Black"
+                  SelectionMode="Single"
+                  IsReadOnly="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Продукт" Binding="{Binding Products.Name}" Width="*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="100"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding UnitPrice, StringFormat={}{0:N2}}" Width="100"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding LineTotal, StringFormat={}{0:N2}}" Width="100" IsReadOnly="True"/>
+                <DataGridTemplateColumn Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Удалить"
+                                    Background="#0C4882"
+                                    Foreground="White"
+                                    Padding="4,2"
+                                    Margin="2,0"
+                                    Click="RemoveProduct_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Итого -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,10">
+            <Label Content="Итого:" FontWeight="Bold" Foreground="#0C4882" FontSize="14"/>
+            <Label x:Name="TotalAmountLabel" Content="0.00" FontWeight="Bold" Width="100" FontSize="14"/>
+        </StackPanel>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" >
+            <Button Content="Добавить продукцию" Width="150" Margin="0,0,10,0" 
+                    Background="#0C4882" Foreground="White" Click="AddProduct_Click"/>
+            <Button Content="Рассчитать материалы" Width="150" Margin="0,0,10,0" 
+                    Background="#0C4882" Foreground="White" Click="CalculateMaterials_Click"/>
+            <Button Content="Сохранить" Width="100" Margin="0,0,10,0" 
+                    Background="#0C4882" Foreground="White" Click="SaveOrder_Click"/>
+            <Button Content="Отмена" Width="100" 
+                    Background="#0C4882" Foreground="White" Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

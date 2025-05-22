@@ -1,0 +1,40 @@
+﻿<Window x:Class="DEM5.AddEditSupplierWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Icon="Resources/app_icon.ico"
+        Title="Добавить / Редактировать поставщика" Height="346" Width="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Button Content="← Назад" Click="BackButton_Click"
+            Background="{StaticResource AccentBrush}" 
+            Foreground="White" Padding="10,5" Margin="0,0,10,10"/>
+            <TextBlock Text="Поставщик" FontSize="22" VerticalAlignment="Center" />
+      
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="0,10,0,10">
+            <TextBlock Text="Выберите поставщика:" FontWeight="Bold"/>
+            <ComboBox x:Name="SupplierComboBox" Grid.Row="1" Margin="0,5" SelectionChanged="SupplierComboBox_SelectionChanged" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Margin="0,10,0,10">
+            <Label Content="Тип поставщика:" />
+            <TextBox x:Name="SupplierTypeTextBox" />
+
+            <Label Content="Название компании:" />
+            <TextBox x:Name="CompanyNameTextBox" />
+
+            <Label Content="ИНН:" />
+            <TextBox x:Name="INNTextBox" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Right" Margin="0,10,0,0" >
+            <Button Content="Добавить нового" Click="AddNewSupplier_Click" Margin="0,0,10,0" />
+            <Button Content="Сохранить" Width="80" Click="SaveSupplier_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,24 @@
+﻿<Window x:Class="DEM5.ProductsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DEM5"
+        mc:Ignorable="d"
+        Icon="Resources/app_icon.ico"
+       Title="Продукция, использующая материал" Height="450" Width="800">
+    <Grid Margin="10">
+        <Button Content="← Назад" 
+            Click="BackButton_Click" 
+            Background="{StaticResource AccentBrush}" 
+            Foreground="White" 
+            Margin="10,10,660,378" 
+            Padding="10,5" />
+        <DataGrid Name="ProductsGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,41,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование продукции" Binding="{Binding ProductName}" Width="*"/>
+                <DataGridTextColumn Header="Требуемое количество материала" Binding="{Binding RequiredQuantity}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

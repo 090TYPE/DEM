@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище DEM5ModelContainer" CdmEntityContainer="DEM5Entities">
+    <EntitySetMapping Name="AccessCards">
+      <EntityTypeMapping TypeName="DEM5Model.AccessCards">
+        <MappingFragment StoreEntitySet="AccessCards">
+          <ScalarProperty Name="CardID" ColumnName="CardID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeEquipmentAccess">
+      <EntityTypeMapping TypeName="DEM5Model.EmployeeEquipmentAccess">
+        <MappingFragment StoreEntitySet="EmployeeEquipmentAccess">
+          <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
+          <ScalarProperty Name="AccessGrantedDate" ColumnName="AccessGrantedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeMovements">
+      <EntityTypeMapping TypeName="DEM5Model.EmployeeMovements">
+        <MappingFragment StoreEntitySet="EmployeeMovements">
+          <ScalarProperty Name="MovementID" ColumnName="MovementID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="MovementTime" ColumnName="MovementTime" />
+          <ScalarProperty Name="MovementType" ColumnName="MovementType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="DEM5Model.Employees">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="PassportData" ColumnName="PassportData" />
+          <ScalarProperty Name="BankDetails" ColumnName="BankDetails" />
+          <ScalarProperty Name="HasFamily" ColumnName="HasFamily" />
+          <ScalarProperty Name="HealthStatus" ColumnName="HealthStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Managers">
+      <EntityTypeMapping TypeName="DEM5Model.Managers">
+        <MappingFragment StoreEntitySet="Managers">
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterialQuantityHistory">
+      <EntityTypeMapping TypeName="DEM5Model.MaterialQuantityHistory">
+        <MappingFragment StoreEntitySet="MaterialQuantityHistory">
+          <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+          <ScalarProperty Name="ChangeAmount" ColumnName="ChangeAmount" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Materials">
+      <EntityTypeMapping TypeName="DEM5Model.Materials">
+        <MappingFragment StoreEntitySet="Materials">
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+          <ScalarProperty Name="QuantityPerPackage" ColumnName="QuantityPerPackage" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="QuantityInStock" ColumnName="QuantityInStock" />
+          <ScalarProperty Name="MinQuantity" ColumnName="MinQuantity" />
+          <ScalarProperty Name="MaterialTypeID" ColumnName="MaterialTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterialTypes">
+      <EntityTypeMapping TypeName="DEM5Model.MaterialTypes">
+        <MappingFragment StoreEntitySet="MaterialTypes">
+          <ScalarProperty Name="MaterialTypeID" ColumnName="MaterialTypeID" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="LossPercentage" ColumnName="LossPercentage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="DEM5Model.OrderDetails">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="DEM5Model.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="PrepaymentDate" ColumnName="PrepaymentDate" />
+          <ScalarProperty Name="ProductionStartDate" ColumnName="ProductionStartDate" />
+          <ScalarProperty Name="ProductionEndDate" ColumnName="ProductionEndDate" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Partners">
+      <EntityTypeMapping TypeName="DEM5Model.Partners">
+        <MappingFragment StoreEntitySet="Partners">
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="PartnerTypeID" ColumnName="PartnerTypeID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="LegalAddress" ColumnName="LegalAddress" />
+          <ScalarProperty Name="INN" ColumnName="INN" />
+          <ScalarProperty Name="DirectorFullName" ColumnName="DirectorFullName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartnerSalesHistory">
+      <EntityTypeMapping TypeName="DEM5Model.PartnerSalesHistory">
+        <MappingFragment StoreEntitySet="PartnerSalesHistory">
+          <ScalarProperty Name="SalesHistoryID" ColumnName="SalesHistoryID" />
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartnerSalesLocations">
+      <EntityTypeMapping TypeName="DEM5Model.PartnerSalesLocations">
+        <MappingFragment StoreEntitySet="PartnerSalesLocations">
+          <ScalarProperty Name="SalesLocationID" ColumnName="SalesLocationID" />
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="LocationType" ColumnName="LocationType" />
+          <ScalarProperty Name="LocationAddress" ColumnName="LocationAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartnerTypes">
+      <EntityTypeMapping TypeName="DEM5Model.PartnerTypes">
+        <MappingFragment StoreEntitySet="PartnerTypes">
+          <ScalarProperty Name="PartnerTypeID" ColumnName="PartnerTypeID" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductMaterials">
+      <EntityTypeMapping TypeName="DEM5Model.ProductMaterials">
+        <MappingFragment StoreEntitySet="ProductMaterials">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductPriceHistory">
+      <EntityTypeMapping TypeName="DEM5Model.ProductPriceHistory">
+        <MappingFragment StoreEntitySet="ProductPriceHistory">
+          <ScalarProperty Name="PriceHistoryID" ColumnName="PriceHistoryID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+          <ScalarProperty Name="NewPrice" ColumnName="NewPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="DEM5Model.Products">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Article" ColumnName="Article" />
+          <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="MinPartnerPrice" ColumnName="MinPartnerPrice" />
+          <ScalarProperty Name="PackageLength" ColumnName="PackageLength" />
+          <ScalarProperty Name="PackageWidth" ColumnName="PackageWidth" />
+          <ScalarProperty Name="PackageHeight" ColumnName="PackageHeight" />
+          <ScalarProperty Name="WeightWithoutPackage" ColumnName="WeightWithoutPackage" />
+          <ScalarProperty Name="WeightWithPackage" ColumnName="WeightWithPackage" />
+          <ScalarProperty Name="QualityCertificate" ColumnName="QualityCertificate" />
+          <ScalarProperty Name="StandardNumber" ColumnName="StandardNumber" />
+          <ScalarProperty Name="ProductionTime" ColumnName="ProductionTime" />
+          <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+          <ScalarProperty Name="WorkshopNumber" ColumnName="WorkshopNumber" />
+          <ScalarProperty Name="EmployeesCount" ColumnName="EmployeesCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="DEM5Model.Suppliers">
+        <MappingFragment StoreEntitySet="Suppliers">
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+          <ScalarProperty Name="SupplierType" ColumnName="SupplierType" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="INN" ColumnName="INN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WarehouseOperations">
+      <EntityTypeMapping TypeName="DEM5Model.WarehouseOperations">
+        <MappingFragment StoreEntitySet="WarehouseOperations">
+          <ScalarProperty Name="OperationID" ColumnName="OperationID" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="OperationDate" ColumnName="OperationDate" />
+          <ScalarProperty Name="OperationType" ColumnName="OperationType" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
